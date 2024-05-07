@@ -101,70 +101,97 @@ document.addEventListener("mousemove", function (dets) {
 
 // Gsap Animations
 
-var tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#sec h1",
-    scroller: "#main",
-    start: "top 27%",
-    end: "top 0",
-    scrub: 2,
-    // markers: true,
-  },
-});
+an = () => {
+  var isMobile = window.innerWidth <= 768; // Change this value based on your mobile breakpoint
 
-tl.to(
-  "#sec h1",
-  {
-    x: -60,
-  },
-  "scroll"
-);
+  var tl = gsap.timeline({
+    scrollTrigger: {
+      // trigger: '.page1 h1',
+      trigger: "#sec h1",
+      scroller: "#main",
+      // markers: true,
+      scrub: 3,
+      start: "top 10%",
+      end: "top 0",
+    },
+  });
 
-tl.to(
-  "#sec h2",
-  {
-    x: 60,
-  },
-  "scroll"
-);
+  if (isMobile) {
+    // Mobile animations
+    tl.to(
+      "#sec h1",
+      {
+        x: 0, // Change these values as needed
+        duration: 1,
+      },
+      "anim"
+    );
+    tl.to(
+      "#sec h2",
+      {
+        x: 0, // Change these values as needed
+        duration: 1,
+      },
+      "anim"
+    );
+    tl.to("#sec video", {
+      height: "100vh",
+      delay: 0.1,
+    });
+  } else {
+    // Desktop animations
+    tl.to(
+      "#sec h1",
+      {
+        x: -100,
+        duration: 1,
+      },
+      "anim"
+    );
+    tl.to(
+      "#sec h2",
+      {
+        x: 100,
+        duration: 1,
+      },
+      "anim"
+    );
+    tl.to("#sec video", {
+      width: "90%",
+      delay: 0.1,
+    });
+  }
 
-tl.to(
-  "#sec video",
-  {
-    width: "90%",
-  },
-  "scroll"
-);
+  var tl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#sec h1",
+      scroller: "#main",
+      // markers: true,
+      scrub: 3,
+      start: isMobile ? "top -50%" : "top -120%", // Adjust these values as needed
+      end: isMobile ? "top -60%" : "top -130%", // Adjust these values as needed
+    },
+  });
+  tl2.to("#main", {
+    backgroundColor: "#fff",
+  });
 
-var tl2 = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#sec h1",
-    scroller: "#main",
-    start: "top -100%",
-    end: "top -110%",
-    scrub: 2,
-    // markers: true,
-  },
-});
-
-tl2.to("#main", {
-  backgroundColor: "#fff",
-});
-
-var tl3 = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#sec h1",
-    scroller: "#main",
-    start: "top -380%",
-    end: "top -400%",
-    scrub: 2,
-    // markers: true,
-  },
-});
-
-tl3.to("#main", {
-  backgroundColor: "#0F0D0D",
-});
+  var tl3 = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#sec h1",
+      scroller: "#main",
+      // markers: true,
+      scrub: 3,
+      start: isMobile ? "top -140%" : "top -280%", // Adjust these values as needed
+      end: isMobile ? "top -150%" : "top -300%", // Adjust these values as needed
+    },
+  });
+  tl3.to("#main", {
+    backgroundColor: "#0f0d0d",
+    color: "white",
+  });
+};
+an();
 
 // animation of boxes using query Selector
 
