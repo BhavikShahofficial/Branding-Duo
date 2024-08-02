@@ -12,9 +12,9 @@
 
 
 @media (max-width:1300px){
-    #navm{
+    /* #navm{
         display:none;
-    }
+    } */
 
     #cursor{
         display: none;
@@ -53,6 +53,10 @@
     #sec2{
         height: 80vh;
         background-color: #fff;
+    }
+
+    #cursor{
+        display: none;
     }
 
     #sec5 {
@@ -121,16 +125,20 @@
         padding-top: 15vh;
     }
 
+    #cursor{
+        display: none;
+    }
+
     #nav {
+        height: 10vh;
+    }
+
+    .navmenu{
         display: none;
     }
 
     #navm {
         display: none;
-    }
-
-    .circle-wrapper {
-     display: none;
     }
 
     #sec h1 {
@@ -217,7 +225,7 @@
     }
 
     #sec3 {
-        min-height: 180vh;
+        min-height: 120vh;
         width: 100%;
         position: relative;
         z-index: 9;
@@ -365,7 +373,7 @@
 
 
     footer {
-        max-height: 100vh;
+        min-height: 100vh;
         width: 100%;
         background-color: #edbefd;
         padding: 0 5vw;
